@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tools – Ivory</title>
+  <meta name="description" content="Small Linux programs I wrote because I needed them: BlackboxD, cardnuke and mend." />
+  <meta property="og:title" content="Tools – Ivory" />
+  <meta property="og:description" content="Small Linux programs I wrote because I needed them: BlackboxD, cardnuke and mend." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ivy06.me/tools/" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #fff5f8; --sheet: #fff9fb; --ink: #5a2b40; --muted: #a07088;
+      --rose: #cf6b91; --wine: #a8456b; --rule: #f0c4d8; --code: #fbe6ee;
+      --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+      --hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #1a0d12; --sheet: #2a1520; --ink: #f6dce6; --muted: #c090a8; --rose: #f0a0c0; --wine: #f6bdd3; --rule: #5a2f44; --code: #1f0f17; }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--ink); font: 400 1.1rem/1.65 var(--serif); min-height: 100vh; }
+    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .06; z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+    .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 40px 22px 60px; }
+    .back { font-family: var(--mono); font-size: .8rem; color: var(--muted); border-bottom: 1px solid var(--muted); }
+    .back:hover { color: var(--rose); border-bottom-color: var(--rose); }
+    header { margin-top: 22px; padding-bottom: 14px; border-bottom: 3px double var(--rule); }
+    h1 { font-size: clamp(2.8rem, 12vw, 4.4rem); font-style: italic; font-weight: 400; line-height: .95; letter-spacing: -.02em; color: var(--wine); }
+    h1::after { content: ""; display: inline-block; width: .14em; height: .14em; margin-left: .1em; background: var(--rose); }
+    .note { font-family: var(--hand); font-size: 1.5rem; line-height: 1.2; color: var(--muted); margin-top: 12px; max-width: 28em; }
+
+    .tool { margin-top: 34px; padding: 16px 18px 18px; border: 1.5px solid var(--rose); background: var(--sheet); box-shadow: 3px 3px 0 var(--rule); }
+    .tool.soon { border-style: dashed; box-shadow: none; opacity: .8; }
+    .tool h2 { font-family: var(--hand); font-weight: 600; font-size: 2.2rem; line-height: 1.1; color: var(--rose); }
+    .tool p { margin-top: 4px; }
+    .tags { font-family: var(--mono); font-size: .74rem; color: var(--muted); margin-top: 8px; }
+    pre { margin-top: 12px; padding: 10px 14px; background: var(--code); border-left: 3px solid var(--rose); font: .82rem/1.55 var(--mono); overflow-x: auto; white-space: pre; }
+    .links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 20px; font-family: var(--mono); font-size: .8rem; }
+    .links a { border-bottom: 1px solid var(--rose); }
+    .links a:hover { color: var(--rose); }
+    .pair { margin-top: 30px; font-family: var(--hand); font-size: 1.5rem; line-height: 1.25; color: var(--rose); transform: rotate(-1deg); max-width: 28em; }
+    footer { margin-top: 46px; padding-top: 12px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="/">back to the homepage</a>
+    <header>
+      <h1>tools</h1>
+      <p class="note">Small Linux programs I wrote because I needed them, and kept using.</p>
+    </header>
+
+    <section class="tool">
+      <h2>BlackboxD</h2>
+      <p>A flight recorder for your computer. It writes down which windows you used and for how long, so you can see where your day went without slowing the machine down.</p>
+      <p class="tags">Python · Go · Rust · Lua</p>
+      <pre>git clone https://github.com/Ivoryy06/BlackboxD.git
+cd BlackboxD &amp;&amp; chmod +x install.sh &amp;&amp; ./install.sh</pre>
+      <div class="links"><a href="/BlackboxD/">open the dashboard</a><a href="https://github.com/Ivoryy06/BlackboxD" target="_blank" rel="noopener noreferrer">source</a></div>
+    </section>
+
+    <section class="tool">
+      <h2>cardnuke</h2>
+      <p>Wipe, back up, check and restore SD cards and USB drives from one terminal. It asks before anything destructive, and its speed and health checks never touch your files.</p>
+      <p class="tags">C++ · Linux</p>
+      <pre>git clone https://github.com/Ivoryy06/cardnuke.git
+cd cardnuke &amp;&amp; make &amp;&amp; sudo ./cardnuke list</pre>
+      <div class="links"><a href="https://github.com/Ivoryy06/cardnuke" target="_blank" rel="noopener noreferrer">source</a></div>
+    </section>
+
+    <section class="tool soon">
+      <h2>mend</h2>
+      <p>System backup, health checks and rollback for Linux, with a terminal interface. It's built to work with BlackboxD: it can hold a backup until you've stepped away, and it knows what you were doing when something broke.</p>
+      <p class="tags">Python · systemd · rsync</p>
+      <div class="links"><span>source: not public yet</span></div>
+    </section>
+
+    <p class="pair">mend and BlackboxD are meant to be used together. One records what you do, the other looks after the machine around it.</p>
+
+    <footer><a href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">github.com/Ivoryy06</a></footer>
+  </div>
+</body>
+</html>
