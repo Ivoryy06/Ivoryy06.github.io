@@ -2,225 +2,28 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Valerie Shirayuri | Programmer and photographer</title>
-<meta name="description" content="Two portfolios in one: the websites and tools Valerie Shirayuri has built, and the photos and videos she takes.">
-<meta name="color-scheme" content="dark light">
-<meta name="theme-color" content="#171019">
-<meta property="og:title" content="Valerie Shirayuri | Programmer and photographer">
-<meta property="og:description" content="Two portfolios in one — the photos and videos, and the websites and tools behind them.">
-<meta property="og:type" content="profile">
-<meta property="og:url" content="https://ivy06.me/">
-<meta property="og:image" content="https://ivy06.me/pictures/valerie/sparrow.jpg">
-<link rel="canonical" href="https://ivy06.me/">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Valerie's diary</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://ivy06.me/diary/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <script>
-  /* Pick the theme before the page paints: my last choice, otherwise the system's. */
-  (function () {
-    var root = document.documentElement;
-    root.classList.add('js');
-    var saved = null;
-    try { saved = localStorage.getItem('vs-theme'); } catch (e) {}
-    if (saved !== 'light' && saved !== 'dark') {
-      saved = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-    }
-    root.setAttribute('data-theme', saved);
-    var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', saved === 'light' ? '#fdf6fb' : '#171019');
-  })();
+  /* ivy06.me is the diary now. Keep the anchor, if there is one. */
+  location.replace('https://ivy06.me/diary/' + location.hash);
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Outfit:wght@300..600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<meta http-equiv="refresh" content="0; url=https://ivy06.me/diary/">
+<style>
+  :root { --bg:#fff5f8; --ink:#5a2b40; --muted:#a07088; --rose:#cf6b91; --wine:#a8456b; --rule:#f0c4d8; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1a0d12; --ink:#f6dce6; --muted:#c090a8; --rose:#f0a0c0; --wine:#f6bdd3; --rule:#5a2f44; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 1.15rem/1.65 'Newsreader', Georgia, serif;
+    min-height: 100vh; display: grid; place-items: center; padding: 24px; text-align: center; }
+  p { color: var(--muted); }
+  a { color: var(--wine); text-decoration: none; border-bottom: 1px solid var(--rose); }
+  a:hover { color: var(--rose); }
+</style>
 </head>
-<body id="top">
-<a class="skip" href="#main">Skip to content</a>
-
-<div class="stage">
-
-  <!-- Left side: the profile card, which stays put while the page scrolls -->
-  <aside class="side">
-    <div class="card profile">
-      <button class="theme" id="theme" type="button" aria-label="Switch to light mode">
-        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/></svg>
-        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7z"/></svg>
-      </button>
-
-      <div class="who">
-        <div class="avatar">
-          <img src="pictures/valerie/pfp.jpeg" width="236" height="236" alt="Valerie's profile picture: a winking character with mint hair and a flower crown.">
-        </div>
-        <div class="who-text">
-          <h1 class="name"><em>Valerie</em> Shirayuri</h1>
-          <p class="role">Programmer - photographer</p>
-        </div>
-      </div>
-
-      <p class="where">MPS <span aria-hidden="true">·</span> Gen 17</p>
-
-      <nav class="menu" aria-label="Sections">
-        <a href="#work" data-nav="work"><span class="n">01</span>Work</a>
-        <a href="#projects" data-nav="projects"><span class="n">02</span>Projects</a>
-        <a href="#about" data-nav="about"><span class="n">03</span>About</a>
-        <a href="#services" data-nav="services"><span class="n">04</span>What I do</a>
-        <a href="#contact" data-nav="contact"><span class="n">05</span>Say hi</a>
-      </nav>
-
-      <div class="profile-actions">
-        <a class="btn primary wide" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">
-          <svg class="ico-fill" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          GitHub · @Ivoryy06
-        </a>
-        <a class="btn ghost wide" href="https://ivy06.me/diary/">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5V5.5M8 7.5h7"/></svg>
-          Read my diary
-        </a>
-      </div>
-    </div>
-  </aside>
-
-  <!-- Right side: everything else -->
-  <main class="main" id="main">
-
-    <section class="hero reveal">
-      <div class="hero-text">
-        <p class="eyebrow">Photography &amp; code</p>
-        <h2 class="hero-title">The smallest detail is the feeling you can't miss.</h2>
-        <p class="hero-p">I build small websites, and I take photos of quiet things. Two portfolios in one — the pictures first, then the code.</p>
-        <div class="cta">
-          <a class="btn primary" href="#work">See my work</a>
-          <a class="btn ghost" href="#contact">Say hi</a>
-        </div>
-      </div>
-
-      <figure class="hero-photo">
-        <img src="pictures/valerie/sparrow.jpg" width="1621" height="1080" alt="A sparrow resting on a concrete ledge.">
-      </figure>
-    </section>
-
-    <section class="block reveal" id="work" aria-labelledby="work-t">
-      <header class="block-head">
-        <span class="num">01</span>
-        <div>
-          <h2 id="work-t">Work</h2>
-          <p>Some of the photos and videos I wanna share!</p>
-        </div>
-      </header>
-
-      <div class="filters" id="filters" role="group" aria-label="Filter work by type" hidden>
-        <button class="chip is-on" type="button" data-filter="all">All</button>
-        <button class="chip" type="button" data-filter="photo">Photo</button>
-        <button class="chip" type="button" data-filter="video">Video</button>
-        <button class="chip" type="button" data-filter="school">School project</button>
-      </div>
-
-      <div class="gallery" id="gallery"></div>
-      <div class="feed card" id="feed" hidden></div>
-      <p class="work-empty" id="work-empty" hidden>Nothing here yet — more soon!</p>
-
-      <p class="more">
-        <a class="btn ghost" href="https://instagram.com/ivoryy06.cr3" target="_blank" rel="noopener noreferrer">More on Instagram <span aria-hidden="true">&nearr;</span></a>
-      </p>
-    </section>
-
-    <section class="block reveal" id="projects" aria-labelledby="projects-t">
-      <header class="block-head">
-        <span class="num">02</span>
-        <div>
-          <h2 id="projects-t">Projects</h2>
-          <p>The other half: websites and tools I've built and use myself.</p>
-        </div>
-      </header>
-
-      <div class="projgrid" id="projgrid"></div>
-
-      <p class="more">
-        <a class="btn ghost" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">&nearr;</span></a>
-      </p>
-    </section>
-
-    <section class="block reveal" id="about" aria-labelledby="about-t">
-      <header class="block-head">
-        <span class="num">03</span>
-        <div>
-          <h2 id="about-t">About</h2>
-        </div>
-      </header>
-
-      <div class="card about-card">
-        <p class="big">Hii! A little bit about myself.</p>
-        <p>I'm part of MPS, a school photo community — Gen 17 — and a self-taught programmer. Most of my pictures are unedited (I'm learning to color grade), and most of my code started as something I wanted to use myself.</p>
-        <p class="sign">— val</p>
-
-        <dl class="facts">
-          <div><dt>Name</dt><dd>Valerie Shirayuri</dd></div>
-          <div><dt>Craft</dt><dd>Websites, photos</dd></div>
-          <div><dt>Community</dt><dd>MPS</dd></div>
-          <div><dt>Generation</dt><dd>17</dd></div>
-        </dl>
-      </div>
-    </section>
-
-    <section class="block reveal" id="services" aria-labelledby="services-t">
-      <header class="block-head">
-        <span class="num">04</span>
-        <div>
-          <h2 id="services-t">What I do</h2>
-        </div>
-      </header>
-
-      <div class="duo">
-        <article class="card service">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8.5 7 10 4.5h4L15.5 7"/><circle cx="12" cy="13.5" r="3.4"/></svg>
-          <h3>Photos &amp; videos</h3>
-          <p>Portraits, events and small everyday scenes. Soft light, steady hands, nothing too stiff.</p>
-        </article>
-
-        <article class="card service">
-          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M3 9h18"/><path d="M6.4 6.9h.01M9 6.9h.01"/></svg>
-          <h3>Websites &amp; tools</h3>
-          <p>Plain HTML, CSS and JavaScript. Small pages and scripts that do one thing well.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="block reveal" id="contact" aria-labelledby="contact-t">
-      <div class="contact">
-        <p class="eyebrow light">05 · Say hi</p>
-        <h2 id="contact-t">Have something in mind?</h2>
-        <p>A shoot, a site, or just a hello. Message me on Instagram, or find the code on GitHub. I usually reply within a day.</p>
-        <div class="contact-actions">
-          <a class="btn light" href="https://instagram.com/ivoryy06.cr3" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" class="dot"/></svg>
-            @ivoryy06.cr3
-          </a>
-          <a class="btn ghost-light" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">
-            <svg class="ico-fill" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            Ivoryy06
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <footer class="foot">
-      <p>&copy; <span id="year">2026</span> Valerie Shirayuri. Please ask before reusing my photos or code.</p>
-      <p class="foot-links"><a href="https://ivy06.me/diary/">Diary</a> <span aria-hidden="true">·</span> <a href="#top">Back to top &uarr;</a></p>
-    </footer>
-
-  </main>
-</div>
-
-<!-- Photo viewer -->
-<dialog class="lb" id="lb" aria-label="Photo viewer">
-  <button class="lb-x" id="lbClose" type="button" aria-label="Close viewer">&times;</button>
-  <button class="lb-n lb-prev" id="lbPrev" type="button" aria-label="Previous photo">&lsaquo;</button>
-  <img id="lbImg" alt="">
-  <button class="lb-n lb-next" id="lbNext" type="button" aria-label="Next photo">&rsaquo;</button>
-</dialog>
-
-<script src="work.js" defer></script>
-<script src="projects.js" defer></script>
-<script src="script.js" defer></script>
+<body>
+  <p>Taking you to the <a href="https://ivy06.me/diary/">diary</a>…</p>
 </body>
 </html>
