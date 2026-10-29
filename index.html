@@ -1,124 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ivory</title>
-  <meta name="description" content="Ivory: programmer and videographer. Projects, tools, a public diary, and a journal that says your words back to you." />
-  <meta property="og:title" content="Ivory" />
-  <meta property="og:description" content="Programmer and videographer. Projects, tools, a public diary, and a journal that says your words back to you." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://ivy06.me/" />
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
-  <style>
-    /* Same family as the diary, BlackboxD and echo, kept in the soft pink palette. */
-    :root {
-      --bg: #fff5f8; --sheet: #fff9fb; --ink: #5a2b40; --muted: #a07088;
-      --rose: #cf6b91; --wine: #a8456b; --rule: #f0c4d8;
-      --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
-      --hand: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Valerie Shirayuri | Programmer and photographer</title>
+<meta name="description" content="Two portfolios in one: the websites and tools Valerie Shirayuri has built, and the photos and videos she takes.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#171019">
+<meta property="og:title" content="Valerie Shirayuri | Programmer and photographer">
+<meta property="og:description" content="Two portfolios in one — the photos and videos, and the websites and tools behind them.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://ivy06.me/">
+<meta property="og:image" content="https://ivy06.me/pictures/valerie/sparrow.jpg">
+<link rel="canonical" href="https://ivy06.me/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<script>
+  /* Pick the theme before the page paints: my last choice, otherwise the system's. */
+  (function () {
+    var root = document.documentElement;
+    root.classList.add('js');
+    var saved = null;
+    try { saved = localStorage.getItem('vs-theme'); } catch (e) {}
+    if (saved !== 'light' && saved !== 'dark') {
+      saved = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     }
-    @media (prefers-color-scheme: dark) {
-      :root { --bg: #1a0d12; --sheet: #2a1520; --ink: #f6dce6; --muted: #c090a8; --rose: #f0a0c0; --wine: #f6bdd3; --rule: #5a2f44; }
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--ink); font: 400 1.1rem/1.65 var(--serif); min-height: 100vh; }
-    body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .06; z-index: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
-    a { color: inherit; text-decoration: none; }
-    :focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
-
-    .wrap { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; padding: 44px 22px 60px; }
-
-    header { padding-bottom: 14px; border-bottom: 3px double var(--rule); }
-    h1 { font-family: var(--serif); font-size: clamp(3.2rem, 14vw, 5.2rem); font-style: italic; font-weight: 400; line-height: .95; letter-spacing: -.02em; color: var(--wine); }
-    h1::after { content: ""; display: inline-block; width: .14em; height: .14em; margin-left: .1em; background: var(--rose); }
-    .role { font-family: var(--hand); font-size: 1.9rem; line-height: 1.2; color: var(--rose); margin-top: 10px; display: inline-block; transform: rotate(-1.5deg); transform-origin: left; }
-    .note { font-family: var(--hand); font-size: 1.45rem; line-height: 1.2; color: var(--muted); margin-top: 12px; max-width: 30em; }
-
-    h2 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; font-style: italic; color: var(--wine); margin: 46px 0 6px; }
-    .lead { color: var(--muted); max-width: 34em; }
-
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
-    .card { display: flex; flex-direction: column; gap: 3px; padding: 14px 16px 15px; border: 1.5px solid var(--rose); background: var(--sheet); box-shadow: 3px 3px 0 var(--rule); transition: transform .2s, box-shadow .2s; }
-    a.card:hover, a.card:focus-visible { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--rose); }
-    .card-name { font-family: var(--hand); font-size: 1.85rem; line-height: 1.1; color: var(--rose); }
-    .card-desc { font-size: .98rem; line-height: 1.5; }
-    .card-meta { font-size: .88rem; color: var(--muted); }
-    .card-tag { margin-top: 6px; font-family: var(--mono); font-size: .72rem; color: var(--muted); }
-    .card.soon { border-style: dashed; box-shadow: none; opacity: .75; }
-
-    footer { margin-top: 46px; padding-top: 12px; border-top: 1px solid var(--rule); font-family: var(--mono); font-size: .78rem; color: var(--muted); }
-    footer a { border-bottom: 1px solid var(--muted); }
-    footer a:hover { color: var(--rose); border-bottom-color: var(--rose); }
-
-    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-    @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
-  </style>
+    root.setAttribute('data-theme', saved);
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', saved === 'light' ? '#fdf6fb' : '#171019');
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&family=Outfit:wght@300..600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="wrap">
-    <header>
-      <h1>ivory</h1>
-      <p class="role">Programmer · Videographer</p>
-      <p class="note">Built and tested locally before every push. I'm putting my projects up after years of using them myself.</p>
-    </header>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
 
-    <main>
-      <h2>Live</h2>
-      <p class="lead">Things you can open and use right now.</p>
-      <div class="grid">
-        <a class="card" href="/tools/">
-          <span class="card-name">Tools</span>
-          <span class="card-desc">Small Linux programs I wrote because I needed them: an activity recorder, a card toolkit and a recovery tool.</span>
-          <span class="card-tag">BlackboxD · cardnuke · mend</span>
-        </a>
-        <a class="card" href="/Echo/">
-          <span class="card-name">echo</span>
-          <span class="card-desc">A journal that says your words back to you. Type an entry, or photograph a handwritten page and let it read the writing.</span>
-          <span class="card-meta">Started in 2026</span>
-          <span class="card-tag">React · Flask · SQLite</span>
-        </a>
-        <a class="card" href="/diary/">
-          <span class="card-name">Diary</span>
-          <span class="card-desc">A public diary with letters to you, a guestbook, and what I'm listening to, watching and reading.</span>
-          <span class="card-meta">Started in 2026</span>
-          <span class="card-tag">Vanilla JS · Supabase</span>
-        </a>
-        <a class="card" href="/WhatRemains/">
-          <span class="card-name">What Remains</span>
-          <span class="card-desc">A year-end keepsake. Fill in a memory card with your photo, a dream and a note to your future self, then download or share it. Works offline.</span>
-          <span class="card-tag">JavaScript · No backend</span>
-        </a>
-        <a class="card" href="https://github.com/Ivoryy06/Raycaster" target="_blank" rel="noopener noreferrer">
-          <span class="card-name">Raycaster</span>
-          <span class="card-desc">A raycaster engine with mouse look. Just for fun.</span>
-          <span class="card-meta">Started in 2024</span>
-          <span class="card-tag">C · SDL2</span>
-        </a>
-      </div>
+<div class="stage">
 
-      <h2>Upcoming</h2>
-      <p class="lead">Still on the desk.</p>
-      <div class="grid">
-        <div class="card soon">
-          <span class="card-name">Mask</span>
-          <span class="card-desc">See who you become with different people.</span>
-          <span class="card-tag">Coming soon</span>
+  <!-- Left side: the profile card, which stays put while the page scrolls -->
+  <aside class="side">
+    <div class="card profile">
+      <button class="theme" id="theme" type="button" aria-label="Switch to light mode">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.9 1.9M16.8 16.8l1.9 1.9M18.7 5.3l-1.9 1.9M7.2 16.8l-1.9 1.9"/></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.6 8.6 0 0 1 9.8 3.5a8.6 8.6 0 1 0 10.7 10.7z"/></svg>
+      </button>
+
+      <div class="who">
+        <div class="avatar">
+          <img src="pictures/valerie/pfp.jpeg" width="236" height="236" alt="Valerie's profile picture: a winking character with mint hair and a flower crown.">
         </div>
-        <div class="card soon">
-          <span class="card-name">Void</span>
-          <span class="card-desc">A privacy-focused browser with Tor integration and fingerprint resistance.</span>
-          <span class="card-tag">Rust · GTK · WebKit</span>
+        <div class="who-text">
+          <h1 class="name"><em>Valerie</em> Shirayuri</h1>
+          <p class="role">Programmer - photographer</p>
         </div>
       </div>
-    </main>
 
-    <footer><a href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">github.com/Ivoryy06</a></footer>
-  </div>
+      <p class="where">MPS <span aria-hidden="true">·</span> Gen 17</p>
+
+      <nav class="menu" aria-label="Sections">
+        <a href="#work" data-nav="work"><span class="n">01</span>Work</a>
+        <a href="#projects" data-nav="projects"><span class="n">02</span>Projects</a>
+        <a href="#about" data-nav="about"><span class="n">03</span>About</a>
+        <a href="#services" data-nav="services"><span class="n">04</span>What I do</a>
+        <a href="#contact" data-nav="contact"><span class="n">05</span>Say hi</a>
+      </nav>
+
+      <div class="profile-actions">
+        <a class="btn primary wide" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">
+          <svg class="ico-fill" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          GitHub · @Ivoryy06
+        </a>
+        <a class="btn ghost wide" href="https://ivy06.me/diary/">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5V5.5M8 7.5h7"/></svg>
+          Read my diary
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Right side: everything else -->
+  <main class="main" id="main">
+
+    <section class="hero reveal">
+      <div class="hero-text">
+        <p class="eyebrow">Photography &amp; code</p>
+        <h2 class="hero-title">The smallest detail is the feeling you can't miss.</h2>
+        <p class="hero-p">I build small websites, and I take photos of quiet things. Two portfolios in one — the pictures first, then the code.</p>
+        <div class="cta">
+          <a class="btn primary" href="#work">See my work</a>
+          <a class="btn ghost" href="#contact">Say hi</a>
+        </div>
+      </div>
+
+      <figure class="hero-photo">
+        <img src="pictures/valerie/sparrow.jpg" width="1621" height="1080" alt="A sparrow resting on a concrete ledge.">
+      </figure>
+    </section>
+
+    <section class="block reveal" id="work" aria-labelledby="work-t">
+      <header class="block-head">
+        <span class="num">01</span>
+        <div>
+          <h2 id="work-t">Work</h2>
+          <p>Some of the photos and videos I wanna share!</p>
+        </div>
+      </header>
+
+      <div class="filters" id="filters" role="group" aria-label="Filter work by type" hidden>
+        <button class="chip is-on" type="button" data-filter="all">All</button>
+        <button class="chip" type="button" data-filter="photo">Photo</button>
+        <button class="chip" type="button" data-filter="video">Video</button>
+        <button class="chip" type="button" data-filter="school">School project</button>
+      </div>
+
+      <div class="gallery" id="gallery"></div>
+      <div class="feed card" id="feed" hidden></div>
+      <p class="work-empty" id="work-empty" hidden>Nothing here yet — more soon!</p>
+
+      <p class="more">
+        <a class="btn ghost" href="https://instagram.com/ivoryy06.cr3" target="_blank" rel="noopener noreferrer">More on Instagram <span aria-hidden="true">&nearr;</span></a>
+      </p>
+    </section>
+
+    <section class="block reveal" id="projects" aria-labelledby="projects-t">
+      <header class="block-head">
+        <span class="num">02</span>
+        <div>
+          <h2 id="projects-t">Projects</h2>
+          <p>The other half: websites and tools I've built and use myself.</p>
+        </div>
+      </header>
+
+      <div class="projgrid" id="projgrid"></div>
+
+      <p class="more">
+        <a class="btn ghost" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">More on GitHub <span aria-hidden="true">&nearr;</span></a>
+      </p>
+    </section>
+
+    <section class="block reveal" id="about" aria-labelledby="about-t">
+      <header class="block-head">
+        <span class="num">03</span>
+        <div>
+          <h2 id="about-t">About</h2>
+        </div>
+      </header>
+
+      <div class="card about-card">
+        <p class="big">Hii! A little bit about myself.</p>
+        <p>I'm part of MPS, a school photo community — Gen 17 — and a self-taught programmer. Most of my pictures are unedited (I'm learning to color grade), and most of my code started as something I wanted to use myself.</p>
+        <p class="sign">— val</p>
+
+        <dl class="facts">
+          <div><dt>Name</dt><dd>Valerie Shirayuri</dd></div>
+          <div><dt>Craft</dt><dd>Websites, photos</dd></div>
+          <div><dt>Community</dt><dd>MPS</dd></div>
+          <div><dt>Generation</dt><dd>17</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="block reveal" id="services" aria-labelledby="services-t">
+      <header class="block-head">
+        <span class="num">04</span>
+        <div>
+          <h2 id="services-t">What I do</h2>
+        </div>
+      </header>
+
+      <div class="duo">
+        <article class="card service">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="3"/><path d="M8.5 7 10 4.5h4L15.5 7"/><circle cx="12" cy="13.5" r="3.4"/></svg>
+          <h3>Photos &amp; videos</h3>
+          <p>Portraits, events and small everyday scenes. Soft light, steady hands, nothing too stiff.</p>
+        </article>
+
+        <article class="card service">
+          <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4.5" width="18" height="15" rx="3"/><path d="M3 9h18"/><path d="M6.4 6.9h.01M9 6.9h.01"/></svg>
+          <h3>Websites &amp; tools</h3>
+          <p>Plain HTML, CSS and JavaScript. Small pages and scripts that do one thing well.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="block reveal" id="contact" aria-labelledby="contact-t">
+      <div class="contact">
+        <p class="eyebrow light">05 · Say hi</p>
+        <h2 id="contact-t">Have something in mind?</h2>
+        <p>A shoot, a site, or just a hello. Message me on Instagram, or find the code on GitHub. I usually reply within a day.</p>
+        <div class="contact-actions">
+          <a class="btn light" href="https://instagram.com/ivoryy06.cr3" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r="1.1" class="dot"/></svg>
+            @ivoryy06.cr3
+          </a>
+          <a class="btn ghost-light" href="https://github.com/Ivoryy06" target="_blank" rel="noopener noreferrer">
+            <svg class="ico-fill" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            Ivoryy06
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p>&copy; <span id="year">2026</span> Valerie Shirayuri. Please ask before reusing my photos or code.</p>
+      <p class="foot-links"><a href="https://ivy06.me/diary/">Diary</a> <span aria-hidden="true">·</span> <a href="#top">Back to top &uarr;</a></p>
+    </footer>
+
+  </main>
+</div>
+
+<!-- Photo viewer -->
+<dialog class="lb" id="lb" aria-label="Photo viewer">
+  <button class="lb-x" id="lbClose" type="button" aria-label="Close viewer">&times;</button>
+  <button class="lb-n lb-prev" id="lbPrev" type="button" aria-label="Previous photo">&lsaquo;</button>
+  <img id="lbImg" alt="">
+  <button class="lb-n lb-next" id="lbNext" type="button" aria-label="Next photo">&rsaquo;</button>
+</dialog>
+
+<script src="work.js" defer></script>
+<script src="projects.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>
