@@ -2,34 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Page not found</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#5a2a92" />
+  <title>Page not found ♡</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Gaegu:wght@400;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
   <style>
-    :root { --bg:#fff5f8; --ink:#5a2b40; --muted:#a07088; --rose:#cf6b91; --wine:#a8456b; --rule:#f0c4d8; }
-    @media (prefers-color-scheme: dark) { :root { --bg:#1a0d12; --ink:#f6dce6; --muted:#c090a8; --rose:#f0a0c0; --wine:#f6bdd3; --rule:#5a2f44; } }
+    :root {
+      --ink:#3f1d4d; --muted:#7d5d8f; --rose:#bf1f8e; --wine:#5a2a92; --blush:#ffe3f1; --petal:#ffb3d9; --sky:#c9b3ff;
+      --glass:rgba(255,246,251,.86); --edge:rgba(255,255,255,.75); --glow:rgba(190,40,150,.24);
+      --grad-strong:linear-gradient(120deg,#e0268f,#8b3dea);
+      --grad-text:linear-gradient(120deg,#e0368f,#a855f7 60%,#7c5cff);
+      --heart:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z' fill='%23ff7ab8'/%3E%3C/svg%3E");
+      --spark:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1c1 6.5 3.5 9 10 11-6.5 2-9 4.5-10 11-1-6.5-3.5-9-10-11 6.5-2 9-4.5 10-11z' fill='%23c9a0ff'/%3E%3C/svg%3E");
+      --moon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z' fill='%23b78cf7'/%3E%3C/svg%3E");
+      --star:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2l2.9 6.9 7.1.6-5.4 4.7 1.7 7.1L12 17.5 5.7 21.3l1.7-7.1L2 9.5l7.1-.6z' fill='%23ffb3d9'/%3E%3C/svg%3E");
+      --bow:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 40'%3E%3Cpath d='M29 23l-7 14 8-3 4-9Z' fill='%23f472b6'/%3E%3Cpath d='M35 23l7 14-8-3-4-9Z' fill='%23f472b6'/%3E%3Cpath d='M30 20C22 6 4 4 4 14c0 11 18 14 26 6Z' fill='%23ffb3d9' stroke='%23fff0f8' stroke-width='1.4' stroke-linejoin='round'/%3E%3Cpath d='M34 20C42 6 60 4 60 14c0 11-18 14-26 6Z' fill='%23ffb3d9' stroke='%23fff0f8' stroke-width='1.4' stroke-linejoin='round'/%3E%3Crect x='27' y='13.5' width='10' height='11' rx='4.5' fill='%23ffd6e8'/%3E%3C/svg%3E");
+      --ears:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 104 36'%3E%3Cpath d='M8 36L14 5 46 28Z' fill='%23ffb3d9' stroke='%23ff7ab8' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M96 36L90 5 58 28Z' fill='%23ffb3d9' stroke='%23ff7ab8' stroke-width='3' stroke-linejoin='round'/%3E%3Cpath d='M16 30L18 14 33 25Z' fill='%23fff0f8'/%3E%3Cpath d='M88 30L86 14 71 25Z' fill='%23fff0f8'/%3E%3C/svg%3E");
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --ink:#fff0fb; --muted:#cbb0da; --rose:#ff8fd0; --wine:#e9d6ff; --blush:#3a2348; --glass:rgba(32,19,44,.82); --edge:rgba(255,170,214,.28); --sky:#c3a9ff; --grad-text:linear-gradient(120deg,#ff9ed8,#c9a8ff 55%,#a99bff); }
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--ink); font: 400 1.15rem/1.65 'Newsreader', Georgia, serif; min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-    main { max-width: 30em; border-left: 3px solid var(--rose); padding-left: 24px; }
-    .num { font-family: 'Caveat', cursive; font-size: 2.2rem; line-height: 1; color: var(--rose); transform: rotate(-3deg); display: inline-block; }
-    h1 { font-size: clamp(2.2rem, 8vw, 3.2rem); font-style: italic; font-weight: 400; line-height: 1.1; color: var(--wine); margin: 6px 0 12px; }
+    body {
+      color: var(--ink); font: 500 1.1rem/1.65 'Nunito', system-ui, sans-serif; min-height: 100vh;
+      display: grid; place-items: center; padding: calc(24px + env(safe-area-inset-top,0px)) 24px calc(24px + env(safe-area-inset-bottom,0px));
+      background: #1b1023; overflow-x: hidden; -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background: linear-gradient(165deg,rgba(255,110,200,.28),rgba(150,95,255,.30) 60%,rgba(190,150,255,.20)), linear-gradient(155deg,rgba(255,186,230,.34),rgba(210,170,255,.28) 55%,rgba(255,226,245,.30)), #1b1023 url("https://ivy06.me/portofolio/pictures/valerie/night-picnic.jpg") center/cover no-repeat;
+    }
+    /* floating hearts, sparkles, stars and a little moon */
+    body::after {
+      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .85;
+      background:
+        var(--spark) 6% 16%/26px no-repeat, var(--heart) 94% 12%/20px no-repeat,
+        var(--moon) 90% 34%/34px no-repeat, var(--star) 5% 42%/20px no-repeat,
+        var(--spark) 9% 64%/32px no-repeat, var(--heart) 92% 72%/24px no-repeat,
+        var(--star) 88% 56%/16px no-repeat, var(--heart) 4% 88%/18px no-repeat;
+      animation: float 9s ease-in-out infinite;
+    }
+    @keyframes float { 50% { transform: translateY(-10px); opacity: .55; } }
+    @keyframes wobble { 0%,100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+
+    main {
+      position: relative; width: min(30em, 100%); margin-top: 28px; padding: 44px 32px 40px; text-align: center;
+      background: var(--glass); border: 1.5px solid var(--edge); border-radius: 34px;
+      -webkit-backdrop-filter: blur(16px) saturate(1.25); backdrop-filter: blur(16px) saturate(1.25);
+      box-shadow: 0 26px 50px -30px rgba(120,20,90,.55), inset 0 0 0 1px rgba(216,191,255,.3);
+    }
+    /* little cat ears peeking over the card */
+    main::before { content: ""; position: absolute; top: -30px; left: 50%; width: 104px; height: 36px; margin-left: -52px; background: var(--ears) center/contain no-repeat; }
+    /* striped ribbon along the bottom */
+    main::after { content: ""; position: absolute; left: 34px; right: 34px; bottom: -8px; height: 9px; border-radius: 0 0 9px 9px; background: repeating-linear-gradient(90deg,#ffb3d9 0 14px,#fff 14px 28px,#d8bfff 28px 42px,#fff 42px 56px); }
+    .bow { position: absolute; top: 14px; right: 20px; width: 46px; height: 29px; background: var(--bow) center/contain no-repeat; transform: rotate(10deg); }
+
+    .num { display: inline-block; font: 700 2.4rem/1 'Gaegu', cursive; color: var(--rose); animation: wobble 4s ease-in-out infinite; }
+    .num::before, .num::after { content: ""; display: inline-block; width: 20px; height: 20px; margin: 0 8px -2px; background: var(--moon) center/contain no-repeat; }
+    .num::after { background-image: var(--spark); }
+    h1 { margin: 8px 0 10px; font: 600 clamp(2.1rem, 8vw, 3rem)/1.1 'Fredoka', sans-serif; color: var(--wine); background: var(--grad-text); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+    .kao { margin: 0 0 14px; font: 700 1.6rem/1.2 'Gaegu', cursive; color: var(--rose); }
     p { color: var(--muted); }
-    nav { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85rem; }
-    a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rose); }
-    a:hover { color: var(--rose); }
+    .squiggle { display: block; width: 150px; max-width: 60%; margin: 16px auto 0; color: var(--sky); }
+
+    nav { margin-top: 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    a { color: var(--wine); text-decoration: none; font: 600 1rem/1.2 'Fredoka', sans-serif; padding: 7px 18px 8px; border-radius: 999px; border: 1.5px solid var(--sky); background: rgba(255,255,255,.35); transition: transform .3s cubic-bezier(.34,1.56,.64,1), color .2s, border-color .2s, background .2s; }
+    a:hover, a:focus-visible { color: var(--rose); border-color: var(--rose); background: var(--blush); transform: translateY(-3px) rotate(-1.5deg); outline: none; }
+    a.home { color: #fff; border-color: transparent; background: var(--grad-strong); box-shadow: 0 14px 24px -16px var(--glow); }
+    a.home:hover, a.home:focus-visible { color: #fff; background: var(--grad-strong); filter: brightness(1.08); }
+
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
   </style>
 </head>
 <body>
   <main>
+    <span class="bow" aria-hidden="true"></span>
     <span class="num">404</span>
     <h1>This page wandered off.</h1>
-    <p>The link might be old, or there's a typo in the address. Nothing is broken on your side.</p>
+    <p class="kao" aria-hidden="true">(｡•́︿•̀｡) ♡</p>
+    <p>The link might be old, or there's a typo in the address. Nothing is broken on your side, so let's get you back somewhere cozy.</p>
+    <svg class="squiggle" viewBox="0 0 210 12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M3 7c12-9 20 6 32-1s20 5 32-1 20 5 32-1 20 5 32-1 20 4 40-1"/></svg>
     <nav>
+      <a class="home" href="/">homepage</a>
       <a href="/diary/">diary</a>
-      <a href="/portofolio/">portfolio</a>
       <a href="/Echo/">echo</a>
       <a href="/BlackboxD/">BlackboxD</a>
+      <a href="/portofolio/">portfolio</a>
     </nav>
   </main>
 </body>
