@@ -307,12 +307,6 @@
       color: var(--primary); vertical-align: .55em; transform: rotate(-10deg);
     }
     .block-head p:not(.eyebrow) { margin: 4px 0 0; font-size: .9rem; color: var(--muted); }
-    .soon-badge {
-      display: inline-block; margin-left: 10px; padding: 4px 10px; border-radius: 999px;
-      background: var(--panel-2); border: 1px dashed var(--line); color: var(--muted);
-      font: 700 .62rem/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase;
-      vertical-align: .35em;
-    }
 
     /* One card per tool. */
     .tool { position: relative; padding: clamp(20px, 3vw, 28px); border-radius: 26px; }
@@ -329,13 +323,8 @@
       font: .82rem/1.75 var(--mono); color: var(--text); white-space: pre;
     }
     .code .p { color: var(--primary); }
+    .code .c { color: var(--muted); }
     .links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
-    .links .soon-text {
-      display: inline-flex; align-items: center; padding: 9px 16px;
-      border-radius: 999px; border: 1.5px dashed var(--line);
-      color: var(--muted); font: 700 .86rem/1.2 var(--font-body);
-    }
-    .tool.soon { border-style: dashed; background: rgba(37, 22, 49, .55); box-shadow: none; }
 
     /* The closing note, like the portfolio's contact card. */
     .contact {
@@ -576,15 +565,19 @@
         <header class="block-head">
           <span class="num">03</span>
           <div>
-            <h2 id="mend-t">mend<span class="soon-badge">soon</span></h2>
+            <h2 id="mend-t">mend</h2>
             <p>Python · systemd · rsync</p>
           </div>
         </header>
 
-        <article class="card tool soon">
-          <p>System backup, health checks and rollback for Linux, with a terminal interface. It's built to work with BlackboxD: it can hold a backup until you've stepped away, and it knows what you were doing when something broke.</p>
+        <article class="card tool">
+          <p>System backup, health checks and rollback for Linux, with a small local dashboard. It can hold a heavy task until you've stepped away, and it knows what you were doing when something broke.</p>
+          <pre class="code"><span class="p">$</span> git clone https://github.com/Ivoryy06/mend.git
+<span class="p">$</span> cd mend &amp;&amp; sudo ln -sf "$PWD/mend" /usr/local/bin/mend
+<span class="p">$</span> mend backup
+<span class="p">$</span> mend web        <span class="c"># dashboard on 127.0.0.1:9110</span></pre>
           <div class="links">
-            <span class="soon-text">source: not public yet</span>
+            <a class="btn ghost small" href="https://github.com/Ivoryy06/mend" target="_blank" rel="noopener noreferrer">source <span aria-hidden="true">↗</span></a>
           </div>
         </article>
       </section>
